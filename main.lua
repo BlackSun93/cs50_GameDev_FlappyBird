@@ -106,7 +106,8 @@ function love.load()
         ['title'] = function() return TitleScreenState() end,
         ['countdown'] = function() return CountdownState() end,
         ['play'] = function() return PlayState() end,
-        ['score'] = function() return ScoreState() end
+        ['score'] = function() return ScoreState() end,
+        ['paused'] = function() return PausedState() end
     }
     gStateMachine:change('title')
 
@@ -127,6 +128,10 @@ function love.keypressed(key)
 
     if key == 'escape' then
         love.event.quit()
+    end
+
+    if key == 'pause' then
+        -- pause?
     end
 end
 

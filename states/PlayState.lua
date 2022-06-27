@@ -32,7 +32,9 @@ function PlayState:update(dt)
     self.timer = self.timer + dt
 
     -- spawn a new pipe pair every second and a half
-    if self.timer > 2 then
+    --if self.timer > 2 then
+    -- now spawns pipes between 1.5 and 6 secs apart
+    if self.timer > (math.random(15, 60) / 10) then
         -- modify the last Y coordinate we placed so pipe gaps aren't too far apart
         -- no higher than 10 pixels below the top edge of the screen,
         -- and no lower than a gap length (90 pixels) from the bottom
@@ -126,4 +128,13 @@ end
 function PlayState:exit()
     -- stop scrolling for the death/score screen
     scrolling = false
+end
+
+function PlayState:paused()
+    -- stop music, stop scrolling
+    scrolling = false
+    sounds['music']:pause()
+end
+
+
 end
